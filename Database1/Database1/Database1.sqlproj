@@ -61,4 +61,7 @@
   <ItemGroup>
     <Build Include="Table1.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Production.publish.xml" />
+  </ItemGroup>
 </Project>
