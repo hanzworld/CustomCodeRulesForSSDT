@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>Production</TargetDatabaseName>
     <DeployScriptFileName>Database1.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=wz7y74f8o9.database.windows.net;User ID=production;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=wz7y74f8o9.database.windows.net;User ID=production;Password=Nyidvm49;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>
