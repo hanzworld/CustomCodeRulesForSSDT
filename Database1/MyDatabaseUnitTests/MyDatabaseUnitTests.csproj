@@ -96,9 +96,9 @@
     <Content Include="Microsoft.SqlServer.Dac.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary2\ClassLibrary2.csproj">
+    <ProjectReference Include="..\ClassLibrary2\CustomRules.csproj">
       <Project>{8f40cfcb-976f-4318-847f-aa795f2a48e0}</Project>
-      <Name>ClassLibrary2</Name>
+      <Name>CustomRules</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

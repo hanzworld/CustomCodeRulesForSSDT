@@ -40,7 +40,7 @@ namespace ClassLibary2
     {
         public const string RuleId = "Rules.DateTimeColumnsWith7Precision";
         public const string RuleDisplayName = "CustomRule1";
-        public const string NameEndingInViewMsgFormat = "Table name {0} contains colum {1} which has a datetime precision of 7. This level of precision is unnecessary for our work and wastes storage space.";
+        public const string NameEndingInViewMsgFormat = "Column name {0} has a datetime precision of 7. This level of precision is unnecessary for our work and wastes storage space.";
 
         /// <summary>
         /// For Element-scoped rules the SupportedElementTypes must be defined, ideally inside the constructor.
@@ -53,7 +53,7 @@ namespace ClassLibary2
         {
             SupportedElementTypes = new[]
             {
-               //Column.TypeClass,
+               //Column.TypeClass, -- this won't work. You specify it and it won't run FFS! Like there are no columns? So confused
                Table.TypeClass
             };
         }
@@ -67,26 +67,44 @@ namespace ClassLibary2
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext ruleExecutionContext)
         {
             List<SqlRuleProblem> problems = new List<SqlRuleProblem>();
-            TSqlObject column = ruleExecutionContext.ModelElement;
-            //if (column != null)
-            //{
-                //if (IsDateTimeWith7Precision(column.GetProperty<int>(Column.Precision)))
-                if (true)
-                {
-                    // DisplayServices is a useful helper service for formatting names
-                    DisplayServices displayServices = ruleExecutionContext.SchemaModel.DisplayServices;
-                    string formattedName = displayServices.GetElementName(column, ElementNameStyle.FullyQualifiedName);
+            TSqlObject thing = ruleExecutionContext.ModelElement;
+            ////if (column != null)
+            ////{
+            //    //if (IsDateTimeWith7Precision(column.GetProperty<int>(Column.Precision)))
+            //    if (true)
+            //    {
+            //        // DisplayServices is a useful helper service for formatting names
+            //        DisplayServices displayServices = ruleExecutionContext.SchemaModel.DisplayServices;
+            //        string formattedName = displayServices.GetElementName(column, ElementNameStyle.FullyQualifiedName);
 
-                    string problemDescription = string.Format(NameEndingInViewMsgFormat, "test",
-                                                              formattedName);
-                    SqlRuleProblem problem = new SqlRuleProblem(problemDescription, column);
-                    problems.Add(problem);
-                }
+            //        string problemDescription = string.Format(NameEndingInViewMsgFormat, "test",
+            //                                                  formattedName);
+            //        SqlRuleProblem problem = new SqlRuleProblem(problemDescription, column);
+            //        problems.Add(problem);
+            //    }
             //}
+
+            if (thing != null)
+            {
+                foreach (var column in thing.GetReferenced(Table.Columns))
+                {
+                    if (IsDateTimeWith7Precision(column.GetProperty<int>(Column.Scale)))
+                    {
+                        //DisplayServices is a useful helper service for formatting names
+                        DisplayServices displayServices = ruleExecutionContext.SchemaModel.DisplayServices;
+                        string formattedName = displayServices.GetElementName(column, ElementNameStyle.FullyQualifiedName);
+
+                        string problemDescription = string.Format(NameEndingInViewMsgFormat, "test",
+                            formattedName);
+                        SqlRuleProblem problem = new SqlRuleProblem(problemDescription, thing);
+                        problems.Add(problem);
+                    }
+                }
+            }
             
             return problems;
         }
-
+        
         private bool IsDateTimeWith7Precision(int precision)
         {
             return precision == 7;

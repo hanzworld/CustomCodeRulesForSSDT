@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "Database1\Database1.sqlproj", "{2326B095-8275-4512-8C87-F2A625391326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsForRules", "RuleTests\UnitTestsForRules.csproj", "{DF142FCD-E8E0-4841-BDB9-C9974F09068D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Failed Experiements", "Failed Experiements", "{76A662B4-AC02-4F17-9A3B-B1BF9B0FCC72}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDatabaseUnitTests", "MyDatabaseUnitTests\MyDatabaseUnitTests.csproj", "{273ABC1F-CCEC-4007-AEE9-14022A6BC67F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary2", "ClassLibrary2\ClassLibrary2.csproj", "{8F40CFCB-976F-4318-847F-AA795F2A48E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRules", "ClassLibrary2\CustomRules.csproj", "{8F40CFCB-976F-4318-847F-AA795F2A48E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +19,6 @@ Global
 		{2326B095-8275-4512-8C87-F2A625391326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2326B095-8275-4512-8C87-F2A625391326}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2326B095-8275-4512-8C87-F2A625391326}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{273ABC1F-CCEC-4007-AEE9-14022A6BC67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{273ABC1F-CCEC-4007-AEE9-14022A6BC67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{273ABC1F-CCEC-4007-AEE9-14022A6BC67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,8 +30,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DF142FCD-E8E0-4841-BDB9-C9974F09068D} = {76A662B4-AC02-4F17-9A3B-B1BF9B0FCC72}
 	EndGlobalSection
 EndGlobal
