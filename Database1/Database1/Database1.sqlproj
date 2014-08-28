@@ -46,6 +46,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
   </PropertyGroup>
   <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
   <PropertyGroup>
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table1.sql" />
+    <Build Include="Procedure1.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Production.publish.xml" />
