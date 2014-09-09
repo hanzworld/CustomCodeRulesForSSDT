@@ -5,7 +5,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database1", "Database1\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDatabaseUnitTests", "MyDatabaseUnitTests\MyDatabaseUnitTests.csproj", "{273ABC1F-CCEC-4007-AEE9-14022A6BC67F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRules", "ClassLibrary2\CustomRules.csproj", "{8F40CFCB-976F-4318-847F-AA795F2A48E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRules", "CustomRules\CustomRules.csproj", "{8F40CFCB-976F-4318-847F-AA795F2A48E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
