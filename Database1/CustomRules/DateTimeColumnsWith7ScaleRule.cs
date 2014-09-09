@@ -8,7 +8,6 @@ namespace CustomRules
 {
     /// <summary>
     /// This is probably the simplest possible example of a rule that uses the public model API to analyze properties of elements.
-    /// In this case any table whose name ends in "View" is treated as a problem.
     /// </summary>
     [ExportCodeAnalysisRule(DateTimeColumnsWith7ScaleRule.RuleId,
         DateTimeColumnsWith7ScaleRule.RuleDisplayName,
