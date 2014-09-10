@@ -69,7 +69,7 @@ namespace CustomRules
             var scale = column.GetProperty<int>(Column.Scale);
             var dataType = GetDataType(column);
 
-            return (dataType == SqlDataType.DateTime2 && scale == 7);
+            return (dataType == SqlDataType.DateTime2 && scale > 2);
         }
 
 
