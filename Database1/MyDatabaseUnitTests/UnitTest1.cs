@@ -103,6 +103,40 @@ namespace MyDatabaseUnitTests
             }
         }
 
+        [TestMethod]
+        public void TestDateTimeColumnWithScale4()
+        {
+            string[] scripts = new[]
+            {
+                "CREATE TABLE t1 (c1 DATETIME2(4) NOT NULL)"
+            };
+
+            using (TSqlModel model = new TSqlModel(SqlServerVersion.SqlAzure, new TSqlModelOptions()))
+            {
+                // Adding objects to the model. 
+                foreach (string script in scripts)
+                {
+                    model.AddObjects(script);
+                }
+
+                var ruleSettings = new CodeAnalysisRuleSettings()
+                {
+                    new RuleConfiguration(DateTimeColumnsWith7ScaleRule.RuleId)
+                };
+                ruleSettings.DisableRulesNotInSettings = true;
+
+
+                CodeAnalysisService service = new CodeAnalysisServiceFactory().CreateAnalysisService(model.Version,
+                    new CodeAnalysisServiceSettings()
+                    {
+                        RuleSettings = ruleSettings
+                    });
+                CodeAnalysisResult analysisResult = service.Analyze(model);
+
+                Assert.AreEqual(1, analysisResult.Problems.Count, "Expect 1 problems to be found");
+            }
+        }
+
 
         #endregion
 
