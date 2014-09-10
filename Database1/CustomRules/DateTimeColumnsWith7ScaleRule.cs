@@ -105,7 +105,6 @@ namespace CustomRules
             }
 
             return dataType.GetProperty<SqlDataType>(DataType.SqlDataType);
-            //TSqlObject builtInType = dataType.GetReferenced(DataType.Type).SingleOrDefault();
 
         }
     }
