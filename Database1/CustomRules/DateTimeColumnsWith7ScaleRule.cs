@@ -66,8 +66,10 @@ namespace CustomRules
         
         private bool IsDateTime2WithExcessiveScale(TSqlObject column)
         {
-            var scale = column.GetProperty<int>(Column.Scale);
             var dataType = GetDataType(column);
+
+            var scale = column.GetProperty<int>(Column.Scale);
+            
 
             return (dataType == SqlDataType.DateTime2 && scale > 2);
         }
