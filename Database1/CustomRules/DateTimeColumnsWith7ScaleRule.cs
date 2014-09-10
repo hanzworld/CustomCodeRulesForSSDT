@@ -48,7 +48,7 @@ namespace CustomRules
             {
                 foreach (var column in table.GetReferenced(Table.Columns))
                 {
-                    if (IsDateTimeWithScale7(column))
+                    if (IsDateTime2WithExcessiveScale(column))
                     {
                         //DisplayServices is a useful helper service for formatting names
                         DisplayServices displayServices = ruleExecutionContext.SchemaModel.DisplayServices;
@@ -64,7 +64,7 @@ namespace CustomRules
             return problems;
         }
         
-        private bool IsDateTimeWithScale7(TSqlObject column)
+        private bool IsDateTime2WithExcessiveScale(TSqlObject column)
         {
             var scale = column.GetProperty<int>(Column.Scale);
             var dataType = GetDataType(column);
