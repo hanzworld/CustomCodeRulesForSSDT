@@ -75,7 +75,35 @@ namespace CustomRules
 
         private SqlDataType GetDataType(TSqlObject something)
         {
-            var dataType = something.GetReferenced(Column.DataType).SingleOrDefault();
+            TSqlObject dataType = something.GetReferenced(Column.DataType).SingleOrDefault();
+
+            if (dataType == null)
+            {
+                return SqlDataType.Unknown;
+            }
+
+            // Some data types don't cleanly convert
+            switch (dataType.Name.Parts.Last())
+            {
+                case "hierarchyid":
+                case "geometry":
+                case "geography":
+                    return SqlDataType.Variant;
+            }
+
+            // Note: User Defined Data Types (UDDTs) are not supported during deployment of memory optimized tables. 
+            // The code below handles UDDTs in order to show how properties of a UDDT should be accessed and because
+            // the model validation does not actually block this syntax at present there are tests that validate this behavior. 
+
+            // User Defined Data Types and built in types are merged in the public model.
+            // We want to examine the built in type: for user defined data types this will be
+            // found by accessing the DataType.Type object, which will not exist for a built in type
+            TSqlObject builtInType = dataType.GetReferenced(DataType.Type).SingleOrDefault();
+            if (builtInType != null)
+            {
+                dataType = builtInType;
+            }
+
             return dataType.GetProperty<SqlDataType>(DataType.SqlDataType);
             //TSqlObject builtInType = dataType.GetReferenced(DataType.Type).SingleOrDefault();
 
